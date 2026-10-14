@@ -1,0 +1,438 @@
+/* =========================================
+   1. VARIABLES Y CONFIGURACIÓN GLOBAL
+   ========================================= */
+:root {
+    --bcp-blue: #022B95;
+    --bcp-orange: #ff7900;
+    --text-gray: #666;
+    --border-gray: #ced4da;
+}
+
+body, html { 
+    margin: 0; 
+    font-family: 'Arial', sans-serif; 
+    min-height: 100%; 
+    overflow-x: hidden; 
+    overflow-y: auto;  
+}
+
+.main-container { 
+    display: flex; 
+    min-height: 100vh; 
+}
+
+/* =========================================
+   2. SIDEBAR (PANEL IZQUIERDO)
+   ========================================= */
+.sidebar { 
+    background-color: var(--bcp-blue); 
+    width: 36%; 
+    display: flex; 
+    flex-direction: column; 
+    color: white; 
+}
+
+.sidebar-header { 
+    padding: 23px 0 0 24px; 
+}
+
+.sidebar-image { 
+    flex-grow: 1; 
+    background: url('bydefault.jpg') no-repeat center center; 
+    background-size: 170%; 
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* =========================================
+   3. SECCIÓN DE LOGIN Y TEXTOS
+   ========================================= */
+.login-section { 
+    width: 64%; 
+    background: #fff; 
+    overflow-y: auto; 
+    padding: 20px 60px; 
+    position: relative; 
+}
+
+.timer { 
+    text-align: right; 
+    font-size: 13px; 
+    color: #333; 
+    margin-bottom: 15px; 
+}
+
+.form-container { 
+    max-width: 360px; 
+    margin: 0 auto; 
+    text-align: center; 
+}
+
+h2 { 
+    color: var(--bcp-blue); 
+    font-size: 22px; 
+    margin-bottom: 5px; 
+}
+
+.subtitle { 
+    color: var(--text-gray); 
+    font-size: 14px; 
+    margin-bottom: 25px; 
+}
+
+.footer-text { 
+    font-size: 11px; 
+    color: #999; 
+    margin-top: 30px; 
+    text-align: center; 
+}
+
+/* =========================================
+   4. COMPONENTES (CARDS Y CONTENEDORES)
+   ========================================= */
+.card-box { 
+    border: 1px solid var(--border-gray); 
+    border-radius: 8px; 
+    padding: 25px; 
+    text-align: left; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+    position: relative; 
+}
+
+.card-boxx { 
+    border: 1px solid var(--border-gray); 
+    border-radius: 8px; 
+    padding: 25px; 
+    text-align: center; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+    position: relative; 
+}
+
+.card-header, .card-headerr { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    font-size: 17px; 
+    font-weight: bold; 
+    color: var(--bcp-blue); 
+    margin-bottom: 20px; 
+}
+
+.card-headerr { 
+    text-align: center; 
+}
+
+/* =========================================
+   5. INPUTS Y FORMULARIOS
+   ========================================= */
+
+/* Fila de Documento (DNI/CE) */
+.input-row { 
+    display: flex; 
+    border: 1px solid var(--border-gray); 
+    border-radius: 8px; 
+    margin-bottom: 18px; 
+    overflow: visible; 
+    position: relative; 
+    transition: 0.3s;
+}
+
+.input-row:hover { border-color: var(--bcp-blue); }
+.input-row:hover .custom-select { background-color: #e6edff; }
+
+.custom-select-wrapper { position: relative; display: flex; }
+
+.custom-select { 
+    padding: 14px 18px; 
+    background: #f8f9fa; 
+    border-right: 1px solid var(--border-gray); 
+    border-radius: 8px 0 0 8px;
+    font-size: 14px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 65px;
+    transition: background-color 0.3s;
+}
+
+.doc-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid var(--border-gray);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.doc-dropdown-menu div {
+    padding: 12px 18px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.doc-dropdown-menu div:hover { background: #f0f4ff; color: var(--bcp-blue); }
+
+.input-inner { 
+    width: 100%; 
+    padding: 12px; 
+    border: none; 
+    outline: none; 
+    font-size: 15px; 
+    background: transparent !important; 
+}
+
+/* Grupos de Input Estándar */
+.input-group { 
+    margin-bottom: 18px; 
+    position: relative; 
+}
+
+.input-group label { 
+    display: block; 
+    font-size: 12px; 
+    color: var(--text-gray); 
+    margin-bottom: 5px; 
+    transition: 0.3s; 
+}
+
+.input-group:hover label { color: var(--bcp-blue); }
+
+.input-group input { 
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid var(--border-gray); 
+    border-radius: 8px; 
+    box-sizing: border-box; 
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus { border-color: var(--bcp-blue); }
+
+/* Captcha */
+.captcha-container { 
+    display: flex; 
+    border: 1px solid var(--border-gray); 
+    border-radius: 8px; 
+    overflow: hidden; 
+    margin-top: 15px; 
+}
+
+.captcha-img-box { 
+    background: #eee; 
+    width: 40%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-right: 1px solid var(--border-gray); 
+}
+
+.captcha-img-box img { max-width: 100%; height: 45px; }
+
+.captcha-input { border: none; padding: 12px; width: 60%; outline: none; }
+
+/* =========================================
+   6. RADIOS, CHECKBOXES Y LINKS
+   ========================================= */
+.radio-group { margin-bottom: 15px; }
+
+.custom-radio { 
+    cursor: pointer; 
+    margin-right: 20px; 
+    position: relative; 
+    padding-left: 25px; 
+    font-size: 14px; 
+}
+
+.custom-radio input { display: none; }
+
+.checkmark { 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    height: 16px; 
+    width: 16px; 
+    border: 2px solid var(--border-gray); 
+    border-radius: 50%; 
+}
+
+.custom-radio input:checked ~ .checkmark { border-color: var(--bcp-orange); }
+
+.custom-radio input:checked ~ .checkmark::after { 
+    content: ""; 
+    position: absolute; 
+    top: 3px; 
+    left: 3px; 
+    width: 10px; 
+    height: 10px; 
+    background: var(--bcp-orange); 
+    border-radius: 50%; 
+}
+
+/* Checkbox Personalizado */
+.checkbox-group { padding: 15px 0 20px 0; margin-bottom: 5px; }
+.custom-checkbox { 
+    display: flex; 
+    align-items: center; 
+    cursor: pointer; 
+    font-size: 14px; 
+    color: var(--text-gray); 
+    user-select: none; 
+    position: relative; 
+}
+
+.custom-checkbox input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+
+.box-check { 
+    height: 18px; 
+    width: 18px; 
+    background-color: #fff; 
+    border: 2px solid var(--border-gray); 
+    border-radius: 4px; 
+    margin-right: 12px; 
+    position: relative; 
+    transition: 0.2s; 
+}
+
+.custom-checkbox:hover input ~ .box-check { border-color: var(--bcp-blue); }
+.custom-checkbox input:checked ~ .box-check { border-color: var(--bcp-orange); }
+
+.box-check:after { 
+    content: ""; 
+    position: absolute; 
+    display: none; 
+    left: 5px; 
+    top: 1px; 
+    width: 5px; 
+    height: 10px; 
+    border: solid var(--bcp-orange); 
+    border-width: 0 3px 3px 0; 
+    transform: rotate(45deg); 
+}
+
+.custom-checkbox input:checked ~ .box-check:after { display: block; }
+
+/* Links */
+.links { display: flex; justify-content: space-between; margin-bottom: 25px; padding: 0 2px; }
+.links a, .change-code { color: var(--bcp-orange); text-decoration: none; font-size: 13px; font-weight: bold; }
+.links a:hover { text-decoration: underline; }
+.change-code { font-size: 12px; display: block; margin-top: 8px; text-align: left; }
+
+/* =========================================
+   7. TECLADO NUMÉRICO (NUMPAD)
+   ========================================= */
+.numpad-container { 
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    width: 100%; 
+    background: white; 
+    border: 1px solid var(--border-gray); 
+    border-radius: 8px; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+    padding: 12px; 
+    z-index: 10; 
+    box-sizing: border-box; 
+    margin-top: 5px;
+}
+
+.numpad-grid { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 8px; 
+}
+
+.numpad-grid button { 
+    padding: 12px; 
+    border: 1px solid #f0f0f0; 
+    background: #fff; 
+    border-radius: 6px; 
+    font-size: 18px; 
+    font-weight: bold;
+    color: var(--bcp-blue);
+    cursor: pointer; 
+    background-image: url('https://www.transparenttextures.com/patterns/p6.png'); 
+    transition: 0.2s;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.numpad-grid button:hover { background-color: #f8f9fa; border-color: var(--bcp-blue); }
+.numpad-grid button.special { color: var(--text-gray); }
+
+/* =========================================
+   8. BOTONES Y ANIMACIONES
+   ========================================= */
+.btn-continue { 
+    width: 100%; 
+    background: var(--bcp-orange); 
+    color: white; 
+    border: none; 
+    padding: 15px; 
+    border-radius: 25px; 
+    font-weight: bold; 
+    font-size: 16px; 
+    cursor: pointer; 
+    margin-top: 20px; 
+    transition: 0.3s;
+}
+
+.btn-continue:hover { background-color: #e66d00; }
+
+#name-group { animation: fadeIn 0.3s ease-in-out; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   9. RESPONSIVE (MÓVIL TIPO APP)
+   ========================================= */
+@media (max-width: 768px) {
+    body, html { overflow-x: hidden !important; overflow-y: auto !important; height: auto !important; }
+    .main-container { display: block !important; height: auto !important; }
+
+    /* Header Fijo */
+    .sidebar { 
+        width: 100% !important; 
+        height: 65px !important; 
+        position: sticky; 
+        top: 0; 
+        z-index: 1000; 
+        padding: 0 !important; 
+        background-color: #002a8d !important; 
+        display: flex !important; 
+        justify-content: center !important; 
+        align-items: flex-start !important; 
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .sidebar-header { padding: 0 !important; margin: 0 0 0 12px !important; }
+    .sidebar-image { display: none !important; }
+
+    /* Contenido */
+    .login-section { 
+        width: 90% !important; 
+        height: auto !important; 
+        padding: 20px 15px !important; 
+        overflow-y: visible !important; 
+        display: block !important; 
+    }
+
+    .form-container { padding-bottom: 300px !important; }
+    .card-box { border: none !important; box-shadow: none !important; padding: 10px !important; }
+    .input-row, .input-group, #btn-submit { width: 100% !important; }
+
+    #btn-submit { position: relative; margin-top: 30px; z-index: 5; }
+
+    .footer-text { padding: 20px; margin-bottom: 100px; }
+}
